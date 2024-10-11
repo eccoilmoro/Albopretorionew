@@ -166,7 +166,7 @@ def post_fb(json_input,comune):
 if __name__ == '__main__':
     # You can get user input if needed or just run the function
     print("Starting the scraping process...")
-    comuni = ["Lugo","Bagnacavallo","Alfonsine","Fusignano","Cotignola","Santagata","Bagnara"]
+    comuni = ["Lugo","Bagnacavallo","Alfonsine","Fusignano","Cotignola","Santagata","Bagnara","Unione"]
     for comune in comuni:
         post_fb(scrape_website(comune),comune)
 
