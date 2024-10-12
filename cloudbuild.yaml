@@ -1,0 +1,30 @@
+steps:
+  # Step 1: Deploy the Cloud Function
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'functions'
+      - 'deploy'
+      - 'scrape_and_post_fb'               # Cloud Function name
+      - '--runtime'
+      - 'python310'                        # Python runtime
+      - '--trigger-http'                   # HTTP trigger
+      - '--entry-point'
+      - 'scrape_and_post_fb'               # Python entry point function
+      - '--region'
+      - 'us-central1'                      # Choose your region
+      - '--allow-unauthenticated'          # Allow public access
+      - '--set-env-vars'
+      - 'FB_ACCESS_TOKEN=$$FB_ACCESS_TOKEN,FB_PAGE_ID=$$FB_PAGE_ID'  # Environment variables
+
+  # Step 2: Test deployment
+  - name: 'gcr.io/cloud-builders/curl'
+    args:
+      ['-X', 'GET', 'https://REGION-PROJECT_ID.cloudfunctions.net/scrape_and_post_fb']
+
+# Substitutions for environment variables (replace with actual values in Cloud Build trigger)
+substitutions:
+  _FB_ACCESS_TOKEN: 'your_facebook_access_token'
+  _FB_PAGE_ID: 'your_facebook_page_id'
+
+timeout: '900s'  # Set timeout to 15 minutes (or more if needed)
