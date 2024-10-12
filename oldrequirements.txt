@@ -1,0 +1,8 @@
+#functions-framework==3.*
+#requests
+#bs4
+#datetime
+#logging
+requests==2.31.0
+beautifulsoup4==4.12.2
+functions-framework==3.5.0
