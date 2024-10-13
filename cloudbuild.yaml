@@ -7,7 +7,7 @@ steps:
       - 'deploy'
       - 'scrape_and_post_fb'               # Cloud Function name
       - '--runtime'
-      - 'python310'                        # Python runtime
+      - #'python310'                        # Python runtime
       - '--trigger-http'                   # HTTP trigger
       - '--entry-point'
       - 'scrape_and_post_fb'               # Python entry point function
