@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from datetime import datetime, timedelta
-#import logging
+import logging
 import os
 from functions_framework import http
 from flask import jsonify
